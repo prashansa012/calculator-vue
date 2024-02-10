@@ -3,14 +3,14 @@
       <div class="display">
         {{ current || 0 }}
       </div>
-      <div @click="clear" class="btn">C</div>
+      <div @click="clear" class="btn">⌫</div>
       <div @click="signs" class="btn">+/-</div>
       <div @click="percent" class="btn">%</div>
-      <div @click="divide" class="btn sign" >/</div>
+      <div @click="divide" class="btn sign" >÷</div>
       <div @click="append('7')" class="btn">7</div>
       <div @click="append('8')" class="btn">8</div>
       <div @click="append('9')" class="btn">9</div>
-      <div @click="times" class="btn sign">X</div>
+      <div @click="times" class="btn sign">x</div>
       <div @click="append('4')" class="btn">4</div>
     <div @click="append('5')" class="btn">5</div>
     <div @click="append('6')" class="btn">6</div>
@@ -65,7 +65,7 @@ export default {
         this.previous=this.current;
     },
     divide(){
-        this.operator=(a,b)=>a/b;
+        this.operator=(a,b)=>b/a;
         this.setPrevious();
         
         },
@@ -80,7 +80,7 @@ export default {
 
          },
     minus(){
-        this.operator=(a,b)=>a-b;
+        this.operator=(a,b)=>b-a;
     this.setPrevious();
     
           },
@@ -93,23 +93,31 @@ this.previous=null;
 </script>
 
 <style scoped>
+
 .calculater{
     display: grid;
      width: 400px;
-     height: 150px;
+     height: 500px;
      margin: 0 auto;
     grid-template-columns:repeat(4,1fr) ;
-    grid-auto-flow: minmax(50px, auto);
+   
+    gap:10px;
+    
+   
 }
 .display{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    
+    align-items: center;
     grid-column: 1/5;
-    background-color:black;
+    background-color:#333;
     color: azure;
-    height: 33px;
+    height: 60px;
+    font-size: 24px;
+    padding: 0 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 .zero{
     grid-column: 1/3;
@@ -117,11 +125,18 @@ this.previous=null;
    
 }
 .btn{
-    background-color: #eee;
-    border: 1px solid #333;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 50%;
+    font-size:24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 .sign{
-    background-color: rgb(252, 189, 94);
+    background-color: #ff9f0a;
     color: white;
+}
+.btn:hover{
+    background-color: #e5e5e5;
 }
 </style>
